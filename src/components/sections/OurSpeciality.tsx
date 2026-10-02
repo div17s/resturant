@@ -1,7 +1,4 @@
-import { useNavigate } from 'react-router-dom';
-
 export const OurSpeciality = () => {
-  const navigate = useNavigate();
 
   const specialities = [
     {
@@ -51,8 +48,7 @@ export const OurSpeciality = () => {
           {specialities.map((item) => (
             <div
               key={item.name}
-              onClick={() => navigate('/menu')}
-              className="relative group overflow-hidden rounded-xl bg-stone-900 border border-stone-800 shadow-2xl cursor-pointer h-[420px] sm:h-[480px] transition-all duration-500 hover:border-amber-700/60 hover:shadow-amber-950/30"
+              className="relative group overflow-hidden rounded-xl bg-stone-900 border border-stone-800 shadow-2xl h-[420px] sm:h-[480px] transition-all duration-500 hover:border-amber-700/60 hover:shadow-amber-950/30"
             >
               {/* Dish Photography */}
               <img
@@ -62,7 +58,7 @@ export const OurSpeciality = () => {
                   e.currentTarget.src = item.fallback;
                 }}
                 alt={`${item.name} cuisine speciality at Ember & Olive`}
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110 group-hover:rotate-1 group-hover:brightness-110"
                 loading="lazy"
               />
 
@@ -71,15 +67,12 @@ export const OurSpeciality = () => {
 
               {/* Bottom Cuisine Title & Subtitle */}
               <div className="absolute inset-x-0 bottom-8 text-center px-4 z-10 flex flex-col items-center">
-                <h3 className="text-3xl sm:text-4xl font-serif text-stone-100 font-normal tracking-wide drop-shadow-md group-hover:text-[#f5be38] transition-colors">
+                <h3 className="text-3xl sm:text-4xl font-serif text-stone-100 font-normal tracking-wide drop-shadow-md group-hover:text-[#f5be38] transition-colors duration-500">
                   {item.name}
                 </h3>
-                <p className="text-xs text-stone-300 font-normal mt-1 max-w-[240px] opacity-90 group-hover:opacity-100 transition-opacity">
+                <p className="text-xs text-stone-300 font-normal mt-1 max-w-[240px] opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                   {item.description}
                 </p>
-                <span className="text-[11px] font-sans font-semibold uppercase tracking-widest text-[#f5be38] mt-3 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                  View Dishes →
-                </span>
               </div>
             </div>
           ))}

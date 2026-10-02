@@ -51,3 +51,36 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
   background: #78350f;
 }
+
+/* --- Premium CSS Scroll Reveal Animations --- */
+.scroll-reveal {
+  opacity: 0 !important;
+  will-change: transform, opacity;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.scroll-reveal.fade-up {
+  transform: translateY(50px) !important;
+}
+
+.scroll-reveal.fade-down {
+  transform: translateY(-50px) !important;
+}
+
+.scroll-reveal.fade-left {
+  transform: translateX(50px) !important;
+}
+
+.scroll-reveal.fade-right {
+  transform: translateX(-50px) !important;
+}
+
+.scroll-reveal.zoom-in {
+  transform: scale(0.93) !important;
+}
+
+/* Visible override state */
+.scroll-reveal.visible {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}

@@ -13,14 +13,24 @@ export const ScrollReveal = ({
   children,
   className = '',
   delay = 0,
-  duration = 750,
+  duration = 1000,
   animation = 'fade-up',
-  threshold = 0.05,
+  threshold = 0.02, // very responsive threshold
 }: ScrollRevealProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Early trigger if element is already in viewport on load
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      const isInViewport = rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
+      if (isInViewport) {
+        setIsVisible(true);
+        return;
+      }
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -32,7 +42,7 @@ export const ScrollReveal = ({
       },
       {
         threshold,
-        rootMargin: '0px 0px -40px 0px',
+        rootMargin: '0px 0px -40px 0px', // slightly offset trigger to keep scroll feel ultra premium
       }
     );
 
@@ -48,28 +58,6 @@ export const ScrollReveal = ({
     };
   }, [threshold]);
 
-  const getAnimationStyles = () => {
-    if (isVisible) {
-      return 'opacity-100 translate-x-0 translate-y-0 scale-100';
-    }
-
-    switch (animation) {
-      case 'fade-up':
-        return 'opacity-0 translate-y-8';
-      case 'fade-down':
-        return 'opacity-0 -translate-y-8';
-      case 'fade-left':
-        return 'opacity-0 translate-x-8';
-      case 'fade-right':
-        return 'opacity-0 -translate-x-8';
-      case 'zoom-in':
-        return 'opacity-0 scale-95';
-      case 'fade':
-      default:
-        return 'opacity-0';
-    }
-  };
-
   return (
     <div
       ref={ref}
@@ -77,7 +65,7 @@ export const ScrollReveal = ({
         transitionDuration: `${duration}ms`,
         transitionDelay: `${delay}ms`,
       }}
-      className={`transition-all ease-out will-change-transform ${getAnimationStyles()} ${className}`}
+      className={`scroll-reveal ${animation} ${isVisible ? 'visible' : ''} ${className}`}
     >
       {children}
     </div>
