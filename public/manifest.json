@@ -1,0 +1,24 @@
+{
+  "name": "Olive & Restro Restaurant",
+  "short_name": "Olive & Restro",
+  "description": "Contemporary Indian & European fusion dining in Vijay Nagar, Indore.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0a09",
+  "theme_color": "#0c0a09",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/src/assets/images/signature_dish_1790878418293.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/src/assets/images/signature_dish_1790878418293.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
